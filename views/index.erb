@@ -3,7 +3,7 @@
 <ul>
   <% Survey.all.each do |survey| %>
   <li>
-    <%= survey.title %>
+    <a href="/surveys/<%= survey.id %>"><%= survey.title %></a>
   </li>
   <% end %>
 </ul>
