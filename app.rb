@@ -24,9 +24,9 @@ post '/add_survey' do
 end
 
 post '/add_question' do
-  question = params.fetch("question")
+  text = params.fetch("text")
   survey_id = params.fetch("survey_id")
-  Question.create(question: question, survey_id: survey_id)
+  Question.create(text: text, survey_id: survey_id)
   redirect back
 end
 
@@ -51,7 +51,7 @@ end
 
 patch '/questions/:id' do
   @survey = Question.find(params.fetch("id"))
-  question = params.fetch("question")
-  @survey.update(question: question)
+  text = params.fetch("text")
+  @survey.update(text: text)
   redirect back
 end
