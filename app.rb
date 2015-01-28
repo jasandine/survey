@@ -41,3 +41,17 @@ patch '/surveys/:id' do
   @survey.update(title: title)
   redirect back
 end
+
+delete '/questions/:id' do
+  question = Question.find(params.fetch("id"))
+  survey_id = question.survey_id
+  question.destroy
+  redirect "/surveys/#{survey_id}"
+end
+
+patch '/questions/:id' do
+  @survey = Question.find(params.fetch("id"))
+  question = params.fetch("question")
+  @survey.update(question: question)
+  redirect back
+end

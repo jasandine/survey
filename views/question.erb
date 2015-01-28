@@ -1,1 +1,15 @@
 <h1><%= @question.question %></h1>
+
+<form action="/questions/<%= @question.id %>" method="post" class="form-control">
+  <input type="hidden" name="_method" value="patch">
+  <label for="question">Change question</label>
+  <input id="question" name="question" type="text">
+  <button type="submit">Update question</button>
+</form>
+
+<form action="/questions/<%= @question.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete question</button>
+</form>
+
+<a href="/surveys/<%= @question.survey_id %>">Back to survey</a>
