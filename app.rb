@@ -55,3 +55,29 @@ patch '/questions/:id' do
   @survey.update(text: text)
   redirect back
 end
+
+get '/responses/:id' do
+  @response_ = Response.find(params.fetch("id"))
+  erb(:response)
+end
+
+delete '/responses/:id' do
+  response = Response.find(params.fetch("id"))
+  question_id = response.question_id
+  response.destroy
+  redirect "/questions/#{question_id}"
+end
+
+patch '/responses/:id' do
+  @response_ = Response.find(params.fetch("id"))
+  text = params.fetch("text")
+  @response_.update(text: text)
+  redirect back
+end
+
+post '/add_response' do
+  text = params.fetch("text")
+  question_id = params.fetch("question_id")
+  Response.create(text: text, question_id: question_id)
+  redirect back
+end
