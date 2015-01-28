@@ -14,3 +14,9 @@ end
 get '/surveys/:id' do
   erb :survey
 end
+
+post '/add_survey' do
+  title = params.fetch("title")
+  Survey.create(title: title)
+  redirect back
+end

@@ -1,0 +1,15 @@
+<h1>List of surveys:</h1>
+
+<ul>
+  <% Survey.all.each do |survey| %>
+  <li>
+    <%= survey.title %>
+  </li>
+  <% end %>
+</ul>
+
+<form action="/add_survey" method="post">
+  <label for="title">Enter title:</label>
+  <input id="title" name="title" type="text">
+  <button type="submit">Add survey</button>
+</form>
